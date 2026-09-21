@@ -25,7 +25,9 @@ Start-Process $f -Wait
 
 [`Install-Pawmodoro-and-Deckbuilder.ps1`](Install-Pawmodoro-and-Deckbuilder.ps1) downloads the newest **Pawmodoro** and/or **Deckbuilder**, checks each download against the checksum GitHub lists for it, and runs the app's own installer. It asks which you want, skips anything already up to date, and is safe to run again. (Pawmodoro needs Python 3 from [python.org](https://www.python.org/downloads/) — tick "Add python.exe to PATH" — or the Microsoft Store; the script tells you if it's missing.)
 
-Paste this into PowerShell:
+**Easiest — no typing or pasting:** open [`Install-Pawmodoro-and-Deckbuilder.bat`](https://github.com/beeftcg-eng/deckbuilder-releases/blob/main/Install-Pawmodoro-and-Deckbuilder.bat), click the **download** icon at the top right of the file ("Download raw file"), then double-click the downloaded file. It fetches the newest script and runs it. If Windows says "Windows protected your PC", click **More info → Run anyway** (the file isn't code-signed).
+
+**Or paste this into PowerShell** (copy just the three lines, with nothing in front of them):
 
 ```powershell
 $s = Join-Path $env:TEMP 'Install-Pawmodoro-and-Deckbuilder.ps1'

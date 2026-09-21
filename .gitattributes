@@ -1,2 +1,3 @@
-# Keep the Windows script byte-for-byte (CRLF) so it downloads exactly as tested.
+# Keep the Windows scripts byte-for-byte (CRLF) so they download exactly as tested.
 *.ps1 -text
+*.bat -text
