@@ -21,6 +21,20 @@ Invoke-WebRequest 'https://github.com/beeftcg-eng/deckbuilder-releases/releases/
 Start-Process $f -Wait
 ```
 
+## Install or update both apps with one script (Windows)
+
+[`Install-Pawmodoro-and-Deckbuilder.ps1`](Install-Pawmodoro-and-Deckbuilder.ps1) downloads the newest **Pawmodoro** and/or **Deckbuilder**, checks each download against the checksum GitHub lists for it, and runs the app's own installer. It asks which you want, skips anything already up to date, and is safe to run again. (Pawmodoro needs Python 3 from [python.org](https://www.python.org/downloads/) — tick "Add python.exe to PATH" — or the Microsoft Store; the script tells you if it's missing.)
+
+Paste this into PowerShell:
+
+```powershell
+$s = Join-Path $env:TEMP 'Install-Pawmodoro-and-Deckbuilder.ps1'
+Invoke-WebRequest 'https://raw.githubusercontent.com/beeftcg-eng/deckbuilder-releases/main/Install-Pawmodoro-and-Deckbuilder.ps1' -OutFile $s -UseBasicParsing
+powershell -ExecutionPolicy Bypass -File $s
+```
+
+Or download the file yourself and run `powershell -ExecutionPolicy Bypass -File .\Install-Pawmodoro-and-Deckbuilder.ps1` (if Windows blocks it because it came from the internet, run `Unblock-File` on it first). Options: `-App Pawmodoro` / `-App Deckbuilder` to skip the question, `-Force` to reinstall, `-SilentDeckbuilder`, and `-DryRun` to download and verify without installing. The script is short and readable — open it and see exactly what it does before you run it.
+
 ## Updates
 
 From version 0.7.0 the app **updates itself**: a few seconds after launch (and every 6 hours while it's open) it checks this repo, downloads a newer version in the background, and shows a **Restart & update** banner. If you ignore the banner it installs the next time you close the app. The sidebar shows your version and a **Check for updates** link. (On Linux, updating works for the AppImage.)

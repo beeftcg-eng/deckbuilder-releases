@@ -1,0 +1,2 @@
+# Keep the Windows script byte-for-byte (CRLF) so it downloads exactly as tested.
+*.ps1 -text
